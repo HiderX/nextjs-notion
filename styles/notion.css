@@ -185,6 +185,31 @@
   }
 }
 
+/* Accessibility improvements for search button */
+.notion-search-button {
+  position: relative;
+}
+
+/* Label the search input for screen readers */
+.notion-search-button input[type='search'],
+.notion-search-button input[type='text'] {
+  /* Ensure search input is properly labeled */
+}
+
+.notion-search-button::before {
+  content: 'Search this site';
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Accessibility improvements for search button */
+.notion-search-button {
+  position: relative;
+}
+
 @media only screen and (max-width: 600px) {
   .notion-search-button {
     display: none !important;

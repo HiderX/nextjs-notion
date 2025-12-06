@@ -44,6 +44,9 @@ export default function App({ Component, pageProps }: AppProps) {
       if (posthogId) {
         posthog.capture('$pageview')
       }
+
+      // Enhance accessibility for dynamically rendered elements
+      enhanceAccessibility()
     }
 
     if (fathomId) {
@@ -54,6 +57,9 @@ export default function App({ Component, pageProps }: AppProps) {
       posthog.init(posthogId, posthogConfig)
     }
 
+    // Initial accessibility enhancement
+    enhanceAccessibility()
+
     router.events.on('routeChangeComplete', onRouteChangeComplete)
 
     return () => {
@@ -62,4 +68,22 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return <Component {...pageProps} />
+}
+
+// Enhance accessibility for dynamically rendered elements
+function enhanceAccessibility() {
+  // Add aria-label to search button
+  const searchButton = document.querySelector('.notion-search-button')
+  if (searchButton && !searchButton.hasAttribute('aria-label')) {
+    searchButton.setAttribute('aria-label', 'Search this site')
+    searchButton.setAttribute('role', 'button')
+  }
+
+  // Add aria-label to search input if present
+  const searchInput = document.querySelector(
+    '.notion-search-button input[type="search"], .notion-search-button input[type="text"]'
+  ) as HTMLInputElement | null
+  if (searchInput && !searchInput.hasAttribute('aria-label')) {
+    searchInput.setAttribute('aria-label', 'Search')
+  }
 }
