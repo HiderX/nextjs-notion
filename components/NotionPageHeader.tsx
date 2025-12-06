@@ -26,6 +26,15 @@ function ToggleThemeButton() {
     <div
       className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
       onClick={onToggleTheme}
+      role='button'
+      tabIndex={0}
+      aria-label={hasMounted && isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onToggleTheme()
+        }
+      }}
     >
       {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
     </div>

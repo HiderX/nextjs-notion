@@ -29,6 +29,30 @@
   padding: 0.5em 2px;
 }
 
+/* Image optimization */
+.notion img,
+.notion picture img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optimize page cover images */
+.notion-page-cover img,
+.notion-page-cover-wrapper img {
+  content-visibility: auto;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Optimize asset images */
+.notion-asset-wrapper img {
+  content-visibility: auto;
+  width: 100%;
+  height: auto;
+}
+
 .notion-asset-caption {
   text-align: center;
 }
@@ -159,6 +183,15 @@
   .notion-search-button {
     display: none !important;
   }
+}
+
+/* Accessibility improvements for search button */
+.notion-search-button {
+  position: relative;
+}
+
+.notion-search-button input[type='search'] {
+  /* Ensure search input is accessible to screen readers */
 }
 
 .notion .notion-page-icon-cover {
