@@ -70,7 +70,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
 }
 
-// Enhance accessibility for dynamically rendered elements
+// Enhance accessibility for dynamically rendered elements and optimize LCP
 function enhanceAccessibility() {
   // Add aria-label to search button
   const searchButton = document.querySelector('.notion-search-button')
@@ -85,5 +85,18 @@ function enhanceAccessibility() {
   ) as HTMLInputElement | null
   if (searchInput && !searchInput.hasAttribute('aria-label')) {
     searchInput.setAttribute('aria-label', 'Search')
+  }
+
+  // Optimize LCP image by setting fetchpriority
+  const lcpImage = document.querySelector('img.notion-page-cover') as HTMLImageElement | null
+  if (lcpImage) {
+    // Set fetchpriority for immediate discovery
+    lcpImage.fetchPriority = 'high'
+    // Also set as attribute for compatibility
+    lcpImage.setAttribute('fetchpriority', 'high')
+    // Remove loading=lazy if present
+    if (lcpImage.loading === 'lazy') {
+      lcpImage.loading = 'eager'
+    }
   }
 }
