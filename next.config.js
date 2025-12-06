@@ -24,6 +24,10 @@ export default withBundleAnalyzer({
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
   },
 
+  // Enable Turbopack (default in Next.js 16)
+  // The React aliasing is handled automatically by Turbopack
+  turbopack: {},
+
   webpack: (config) => {
     // Workaround for ensuring that `react` and `react-dom` resolve correctly
     // when using a locally-linked version of `react-notion-x`.
