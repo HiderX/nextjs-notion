@@ -91,6 +91,16 @@ export function PageHead({
         </>
       )}
 
+      {/* Preload LCP image with high priority */}
+      {socialImageUrl && (
+        <link
+          rel='preload'
+          as='image'
+          href={socialImageUrl}
+          fetchPriority='high'
+        />
+      )}
+
       <link
         rel='alternate'
         type='application/rss+xml'
