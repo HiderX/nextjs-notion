@@ -10,10 +10,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 export default withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
-  
-  // Target modern browsers to avoid unnecessary polyfills
-  swcMinify: true,
-  
+
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'www.notion.so' },

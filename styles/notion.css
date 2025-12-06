@@ -44,6 +44,12 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+  /* Optimize LCP by ensuring first image loads with high priority */
+  fetch-priority: high;
+}
+
+.notion-page-cover-wrapper img:not(:first-child) {
+  fetch-priority: auto;
 }
 
 /* Optimize asset images */

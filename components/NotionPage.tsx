@@ -182,7 +182,6 @@ const propertyTextValue = (
 
   return defaultFn()
 }
-
 export function NotionPage({
   site,
   recordMap,
@@ -191,27 +190,6 @@ export function NotionPage({
 }: types.PageProps) {
   const router = useRouter()
   const lite = useSearchParam('lite')
-
-  // Optimize LCP image by setting fetchpriority on the first page cover image
-  React.useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const pageCovers = document.querySelectorAll('.notion-page-cover img')
-      if (pageCovers.length > 0) {
-        const firstImage = pageCovers[0] as HTMLImageElement
-        if (!firstImage.hasAttribute('fetchpriority')) {
-          firstImage.setAttribute('fetchpriority', 'high')
-        }
-        observer.disconnect()
-      }
-    })
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    })
-
-    return () => observer.disconnect()
-  }, [])
 
   const components = React.useMemo<Partial<NotionComponents>>(
     () => ({
