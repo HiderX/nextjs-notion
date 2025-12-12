@@ -41,7 +41,7 @@
     "katex": "^0.16.25",
     "ky": "^1.8.1",
     "lqip-modern": "^2.2.1",
-    "next": "^16.0.7",
+    "next": "^16.0.10",
     "notion-client": "^7.7.0",
     "notion-types": "^7.7.0",
     "notion-utils": "^7.7.0",
