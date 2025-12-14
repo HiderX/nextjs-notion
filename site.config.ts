@@ -54,6 +54,10 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
+      title: 'Frameworks',
+      pageId: 'Go-2c949ed1f97b80808e75d2b0df8a404b'
+    },
+    {
       title: 'About',
       pageId: 'About-2c049ed1f97b81669bcbc6c26257ba68'
     },
